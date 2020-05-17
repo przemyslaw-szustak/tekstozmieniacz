@@ -68,10 +68,10 @@ function App(){
             // template.$findedWords.html('');
             template.$outputText.html('');
 
-            template.$findedWordsInfo.append('Znaleziono: <span> wszystkich słów: <strong>'+allWordsCount+'</strong></span>');
+            template.$findedWordsInfo.append('Znaleziono: <span> słowa: <strong>'+allWordsCount+'</strong></span>');
             if(allWordsCount <= 0) return;
             
-            template.$findedWordsInfo.append('<span>, pasujące słowa: <strong>'+findedWordsCount+'</strong>.</span><br>');
+            template.$findedWordsInfo.append('<span>, pasujące: <strong>'+findedWordsCount+'</strong>.</span><br>');
 
             search.createButtons();
             // if(findedWordsCount > 0){
@@ -86,6 +86,7 @@ function App(){
             template.$findedWords.on('click', 'button', function(e){
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('btn click')
                 var $btn = $(this)
                     , $chbk = $btn.find('.checkedStatus')
                 ;
@@ -182,7 +183,11 @@ function App(){
             template.$searchWords.on('input', function(e){
                 template.$outputText.html('');
                 search.findWords();
-            })
+            });
+            template.$inputText.on('input', function(e){
+                template.$outputText.html('');
+                search.findWords();
+            });
             
             template.$replaceWordsBtn.on('click', function(e){
                 e.preventDefault();
@@ -192,7 +197,7 @@ function App(){
 
             template.$replaceWords.on('input', function(e){
                 search.createButtons();
-            })
+            });
         }
     };
 
