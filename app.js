@@ -114,7 +114,7 @@ function App(){
             // jeżeli słowa zaczynają się na taką samą literę ale wielką
             if(searchedWord === ((word[0]).toLowerCase() + word.substr(1))) return true;
 
-            if(searchedWord[searchedWord.length -1] === '*'){
+            if(searchedWord[searchedWord.length -1] === '*' || template.$useRegexpBtn.hasClass('isActive')){
                 // lore* === loremipsum, lore* === lorem itp.
                 if(searchedWord.substr(0, searchedWord.length - 1, -1) === word.substr(0, searchedWord.length - 1, -1)) return true;
                 // lore* === Loremipsum, lore* === Lorem itp.
@@ -165,6 +165,7 @@ function App(){
         , $findedWordsInfo: null
         , $inputText: null
         , $outputText: null
+        , $useRegexpBtn: null
         , init: function(){
             template.$searchWordsBtn = $('#searchWordsBtn');
             template.$searchWords = $('#searchWords');
@@ -174,6 +175,7 @@ function App(){
             template.$findedWordsInfo = $('#findedWordsInfo');
             template.$inputText = $('#inputText');
             template.$outputText = $('#outputText');
+            template.$useRegexpBtn = $('#useRegexpBtn');
 
             template.$searchWordsBtn.on('click', function(e){
                 e.preventDefault();
@@ -198,6 +200,31 @@ function App(){
             template.$replaceWords.on('input', function(e){
                 search.createButtons();
             });
+
+            template.$useRegexpBtn.on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                var $btn = $(this);
+                $btn.toggleClass('isActive');
+                if($btn.hasClass('isActive')){
+                    $btn.css('opacity', 1);
+                }else{
+                    $btn.css('opacity', .3);
+                }
+                
+                search.findWords();
+            });
+
+            template.$outputText.on('click', function(){
+                template.$outputText.select();
+                document.execCommand('copy');
+
+                setTimeout(function(){
+                    template.$outputText.popover('hide');
+                }, 1000);
+                template.$outputText.popover('show');
+            });
+
         }
     };
 

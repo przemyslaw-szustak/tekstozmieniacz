@@ -26,15 +26,28 @@
                 </div> -->
                 <div class="col-md">
                     <div class="input-group">
-                        <!-- <div class="input-group-prepend">
-                            <button class="btn btn-info" type="button" id="searchWordsBtn">
-                                <i class="fas fa-search"></i>
-                                <span class="d-none d-md-inline">Szukaj</span>
-                            </button>
-                        </div> -->
                         <input autocomplete="off" autocapitalize="off" id="searchWords" type="text" class="form-control"
                             placeholder="Szukane słowo, np. klient lub klien* " aria-describedby="searchWordsBtn"
                             value="">
+<!--                             
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary active">
+                                  <input type="checkbox" checked> Checked
+                                </label>
+                              </div> -->
+                              
+                            <div class="input-group-append">
+                                <button id="useRegexpBtn" class="btn btn-outline-secondary active isActive" type="button">
+                                    <i class="fas fa-asterisk"></i>
+                                </button>
+                             </div>
+                        <!-- <div class="input-group-prepend"> -->
+                         
+                            <!-- <button class="btn btn-" type="button" id="searchWordsBtn"> -->
+                                <!-- <i class="fas fa-search"></i> -->
+                                <!-- <span class="d-none d-md-inline">Szukaj</span> -->
+                            <!-- </button> -->
+                        <!-- </div> -->
 
                     </div>
                     <small id="searchWordsHelp" class="form-text text-muted">Pamiętaj o użyciu gwiazdki, np.:
@@ -44,8 +57,8 @@
                 </div>
                 <div class="col-md">
                     <div class="input-group">
-                        <input autocomplete="off" autocapitalize="off" id="replaceWords" type="text" class="form-control" placeholder="Zamień na"
-                            aria-describedby="replaceWordsBtn" value="">
+                        <input autocomplete="off" autocapitalize="off" id="replaceWords" type="text"
+                            class="form-control" placeholder="Zamień na" aria-describedby="replaceWordsBtn" value="">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="button" id="searchWordsBtn">
                                 <i class="fas fa-sync-alt"></i>
@@ -80,8 +93,8 @@
             <br>
             <div class="form-row">
                 <div class="col">
-
                     <textarea id="outputText" class="form-control form-control-sm" rows="8"
+                        data-container="body" data-toggle="popover" data-placement="top" data-content="Tekst został skopiowany!"
                         placeholder="Miejsce na zmieniony tekst"></textarea>
                 </div>
             </div>
