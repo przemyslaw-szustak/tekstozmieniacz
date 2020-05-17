@@ -107,6 +107,7 @@ function App(){
             });
         }
         , analyzeWord: function(searchedWord, word){
+            var asteriskIndex = 0;
             // jeżeli są takie same - to ok
             if(searchedWord === word) return true;
             // jeżeli nie ma jakiegoś z pól to nie ma sensu analizować
@@ -115,10 +116,11 @@ function App(){
             if(searchedWord === ((word[0]).toLowerCase() + word.substr(1))) return true;
 
             if(searchedWord[searchedWord.length -1] === '*' || template.$useRegexpBtn.hasClass('isActive')){
+                if(searchedWord[searchedWord.length -1] === '*') asteriskIndex = 1;
                 // lore* === loremipsum, lore* === lorem itp.
-                if(searchedWord.substr(0, searchedWord.length - 1, -1) === word.substr(0, searchedWord.length - 1, -1)) return true;
+                if(searchedWord.substr(0, searchedWord.length - asteriskIndex) === word.substr(0, searchedWord.length - asteriskIndex)) return true;
                 // lore* === Loremipsum, lore* === Lorem itp.
-                if(searchedWord.substr(0, searchedWord.length - 1, -1) === ((word[0]).toLowerCase() + word.substr(1)).substr(0, searchedWord.length - 1, -1)) return true;
+                if(searchedWord.substr(0, searchedWord.length - asteriskIndex) === ((word[0]).toLowerCase() + word.substr(1)).substr(0, searchedWord.length - asteriskIndex)) return true;
             }
 
             return false
