@@ -32,7 +32,7 @@
                                 <span class="d-none d-md-inline">Szukaj</span>
                             </button>
                         </div> -->
-                        <input autocomplete="off" id="searchWords" type="text" class="form-control"
+                        <input autocomplete="off" autocapitalize="off" id="searchWords" type="text" class="form-control"
                             placeholder="Szukane słowo, np. klient lub klien* " aria-describedby="searchWordsBtn"
                             value="">
 
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md">
                     <div class="input-group">
-                        <input id="replaceWords" type="text" class="form-control" placeholder="Zamień na"
+                        <input autocomplete="off" autocapitalize="off" id="replaceWords" type="text" class="form-control" placeholder="Zamień na"
                             aria-describedby="replaceWordsBtn" value="">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="button" id="searchWordsBtn">
@@ -99,7 +99,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-    <script src="app.js?v=1"></script>
+    <script src="app.js?v=1.1"></script>
 </body>
 
 </html>
