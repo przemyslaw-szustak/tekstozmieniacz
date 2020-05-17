@@ -16,7 +16,7 @@
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container-md">
         <form>
             <p>
                 Wpisz po przecinku słowa jakie chcesz szukać i zamienić:
@@ -24,30 +24,33 @@
             <div class="form-row">
                 <!-- <div class="col">
                 </div> -->
-                <div class="col">
+                <div class="col-md">
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-info" type="button" id="searchWordsBtn"> <i
-                                    class="fas fa-search"></i>
-                                Szukaj</button>
-                        </div>
-                        <input id="searchWords" type="text" class="form-control"
+                        <!-- <div class="input-group-prepend">
+                            <button class="btn btn-info" type="button" id="searchWordsBtn">
+                                <i class="fas fa-search"></i>
+                                <span class="d-none d-md-inline">Szukaj</span>
+                            </button>
+                        </div> -->
+                        <input autocomplete="off" id="searchWords" type="text" class="form-control"
                             placeholder="Szukane słowo, np. klient lub klien* " aria-describedby="searchWordsBtn"
                             value="">
-                            
-                        </div>
-                        <small id="searchWordsHelp" class="form-text text-muted">Pamiętaj o użyciu gwiazdki, np.: 
-                            "<strong>klien</strong>*" znajdzie "<strong>klien</strong>t", "<strong>klien</strong>ci", "<strong>klien</strong>towi" itp..</small>
+
+                    </div>
+                    <small id="searchWordsHelp" class="form-text text-muted">Pamiętaj o użyciu gwiazdki, np.:
+                        "<strong>klien</strong>*" znajdzie "<strong>klien</strong>t", "<strong>klien</strong>ci",
+                        "<strong>klien</strong>towi" itp..</small>
 
                 </div>
-                <div class="col">
+                <div class="col-md">
                     <div class="input-group">
                         <input id="replaceWords" type="text" class="form-control" placeholder="Zamień na"
                             aria-describedby="replaceWordsBtn" value="">
                         <div class="input-group-append">
-                            <button class="btn btn-success" type="button" id="replaceWordsBtn"> <i
-                                    class="fas fa-exclamation-triangle"></i>
-                                Zamień wszystkie!</button>
+                            <button class="btn btn-success" type="button" id="replaceWordsBtn">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span class="d-none d-md-inline">Zamień</span>
+                            </button>
                         </div>
                     </div>
 
@@ -67,8 +70,7 @@
             <div class="form-row">
                 <div class="col">
                     <textarea id="inputText" class="form-control form-control-sm" rows="8"
-                        placeholder="Oryginalny tekst">
-                    </textarea>
+                        placeholder="Oryginalny tekst"></textarea>
                 </div>
             </div>
             <br>

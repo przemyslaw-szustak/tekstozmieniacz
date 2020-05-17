@@ -50,11 +50,22 @@ function App(){
             template.$outputText.val(newTextWordsArr.join(' '));
             alert('Zmieniono '+repleaced)
         }
-        , printInfo: function(allWordsCount, findedWordsCount){
+        , createButtons: function(){
             var replaceToText = template.$replaceWords.val(), replaceToTextTmp;
 
-            template.$findedWordsInfo.html('');
             template.$findedWords.html('');
+
+            for(var word in search.findedWordsInfo){
+                replaceToTextTmp = search.replaceWordUpperLower(word, replaceToText);
+
+                template.$findedWords.append('<button class="btn btn-primary mb-2" data-text="'+word+'"> <i class="far fa-check-square checkedStatus isChecked"></i> '+word+' > "'+replaceToTextTmp+'" <span class="badge badge-light">'+(search.findedWordsInfo[word].count)+'</span></button> ');
+            }
+            template.$findedWords.append('<br /><br />');
+        }
+        , printInfo: function(allWordsCount, findedWordsCount){
+
+            template.$findedWordsInfo.html('');
+            // template.$findedWords.html('');
             template.$outputText.html('');
 
             template.$findedWordsInfo.append('Znaleziono: <span> wszystkich słów: <strong>'+allWordsCount+'</strong></span>');
@@ -62,16 +73,17 @@ function App(){
             
             template.$findedWordsInfo.append('<span>, pasujące słowa: <strong>'+findedWordsCount+'</strong>.</span><br>');
 
-            if(findedWordsCount > 0){
-                for(var word in search.findedWordsInfo){
-                    replaceToTextTmp = search.replaceWordUpperLower(word, replaceToText);
+            search.createButtons();
+            // if(findedWordsCount > 0){
+            //     for(var word in search.findedWordsInfo){
+            //         replaceToTextTmp = search.replaceWordUpperLower(word, replaceToText);
 
-                    template.$findedWords.append('<button class="btn btn-primary" data-text="'+word+'"> <i class="far fa-check-square checkedStatus isChecked"></i> '+word+' > "'+replaceToTextTmp+'" <span class="badge badge-light">'+(search.findedWordsInfo[word].count)+'</span></button> ');
-                }
-                template.$findedWords.append('<br /><br />');
-            }
+            //         template.$findedWords.append('<button class="btn btn-primary mb-2" data-text="'+word+'"> <i class="far fa-check-square checkedStatus isChecked"></i> '+word+' > "'+replaceToTextTmp+'" <span class="badge badge-light">'+(search.findedWordsInfo[word].count)+'</span></button> ');
+            //     }
+            //     template.$findedWords.append('<br /><br />');
+            // }
 
-            template.$findedWords.find('button').on('click', function(e){
+            template.$findedWords.on('click', 'button', function(e){
                 e.preventDefault();
                 e.stopPropagation();
                 var $btn = $(this)
@@ -171,12 +183,16 @@ function App(){
                 template.$outputText.html('');
                 search.findWords();
             })
-
+            
             template.$replaceWordsBtn.on('click', function(e){
                 e.preventDefault();
                 e.stopPropagation();
                 search.replaceWords();
             });
+
+            template.$replaceWords.on('input', function(e){
+                search.createButtons();
+            })
         }
     };
 
